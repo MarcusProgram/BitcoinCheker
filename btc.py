@@ -2,13 +2,13 @@ import binascii
 import bip32utils
 import secrets
 from mnemonic import Mnemonic
-from colorama import Fore, Back
+from colorama import Fore, Back, init
 import string
 import os
 import blockcypher
 from moneywagon import AddressBalance
 # Все импорты
-
+init()
 
 #Если что я никого не принуждаю это делать я это сделал чисто для того что бы проверить себя, и дать ознакомится
 #другим, что бы понимали как это работает
@@ -88,11 +88,11 @@ def start():
 
 print("\t\t\t░█▀▄▀█ ─█▀▀█ ░█▀▀█ ░█▀▀█ ░█─░█ ░█▀▀▀█")
 print("\t\t\t░█░█░█ ░█▄▄█ ░█▄▄▀ ░█─── ░█─░█ ─▀▀▀▄▄")
-print("\t\t\t░█──░█ ░█─░█ ░█─░█ ░█▄▄█ ─▀▄▄▀ ░█▄▄▄█")
+print("\t\t\t░█──░█ ░█─░█ ░█─░█ ░█▄▄█ ─▀▄▄▀ ░█▄▄▄█\n")
 
 print(
-    Fore.GREEN + f"Приветствую!{Fore.RESET}"
-                 f"Данная программа была написана программистом {Fore.RED}MARCUS{Fore.RESET}\n")
+    Fore.GREEN + f"\t\t\t\tПриветствую!{Fore.RESET}\n"
+                 f"\t\tДанная программа была написана программистом {Fore.RED}MARCUS{Fore.RESET}\n")
 
 a=input("Что вы хотите майнить?(BTC, ETH): ")
 if (a.lower() == "btc"):

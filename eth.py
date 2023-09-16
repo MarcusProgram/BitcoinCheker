@@ -2,10 +2,9 @@ import blocksmith
 from eth_keys import keys
 from eth_utils import decode_hex
 import pyetherbalance
-from colorama import Fore, Back
-
+from colorama import Fore, Back, init
 # Все импорты
-
+init()
 
 #Если что я никого не принуждаю это делать я это сделал чисто для того что бы проверить себя, и дать ознакомится
 #другим, что бы понимали как это работает
