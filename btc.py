@@ -1,11 +1,12 @@
 import binascii
 import bip32utils
 import secrets
-from bitcoinlib.wallets import Wallet
 from mnemonic import Mnemonic
 from colorama import Fore, Back
 import string
 import os
+import blockcypher
+from moneywagon import AddressBalance
 # Все импорты
 
 
@@ -36,11 +37,11 @@ def generate_random_word(length):
 
 def check_balance(address):
     try:
-        wallet = Wallet.create(generate_random_word(600)) #Создаю рандомное слово для временного кошелька из 600 символов(Без этого не будет работать)
-        balance = wallet.balance(address) #переменная куда записал баланс
-        return balance #возвращаю баланс
-    except Exception as e: # ну тут если ошибка и тд
-        print("error:", e)
+        total = blockcypher.get_total_balance(address)
+        return float(total)
+    except:
+        total = AddressBalance().action('btc', address)
+        return float(total)
 def bip39(mnemonic_words):
     ##########################
     seed = Mnemonic("english").to_seed(mnemonic_words)
@@ -54,7 +55,7 @@ def bip39(mnemonic_words):
     #############################ПЕРЕМЕННЫЕ#################################
     ######################################################################
     address = bip32_child_key_obj.Address()  # Из мнемонической фразы генерирует адрес
-    balance = "{:.9f}".format(check_balance(address))  # делаю что бы было 9 знаков после запятой
+    balance = check_balance(address)
     public_Key = binascii.hexlify(bip32_child_key_obj.PublicKey()).decode() #Переменная где хранится public key
     private_Key = bip32_child_key_obj.WalletImportFormat()#Переменная где хранится private key
     ######################################################################
