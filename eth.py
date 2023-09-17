@@ -62,13 +62,16 @@ def generate_private_key():
     generate_address(key)
     generate_public_key(key)
     return key
-
+global url
+url = input("Введите свой mainnet.infura.io код: ")
 def start(i):
-    global url
-    url = input("Введите свой mainnet.infura.io код: ")
-    #eec9b42b403f4a3aad1099940d4abe36
-    while True: #Вечный цикл
-        print(f"[{i}]", generate_private_key()) #Выводин на экран и делает выше функцию
-        i += 1  # прибавляет к i + 1
+    try:
+        #eec9b42b403f4a3aad1099940d4abe36
+        while True: #Вечный цикл
+            print(f"[{i}]", generate_private_key()) #Выводин на экран и делает выше функцию
+            i += 1  # прибавляет к i + 1
+    except Exception as ex:
+        print("ERROR!")
+        print(ex)
 
 start(0)
