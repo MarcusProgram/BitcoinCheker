@@ -25,9 +25,10 @@ def generate_public_key(private_key):
     priv_key = keys.PrivateKey(priv_key_bytes)
     pub_key = priv_key.public_key
     return pub_key
+
 def check_balance_print(address,key):
     try:
-        provider = HTTPProvider('https://mainnet.infura.io/v3/eec9b42b403f4a3aad1099940d4abe36')
+        provider = HTTPProvider(f'https://mainnet.infura.io/v3/{url}')
         if (provider.is_connected()):
             web3 = Web3(provider)
             address = Web3.to_checksum_address(address)
@@ -63,10 +64,11 @@ def generate_private_key():
     return key
 
 def start(i):
+    global url
+    url = input("Введите свой mainnet.infura.io код: ")
+    #eec9b42b403f4a3aad1099940d4abe36
     while True: #Вечный цикл
         print(f"[{i}]", generate_private_key()) #Выводин на экран и делает выше функцию
         i += 1  # прибавляет к i + 1
-        #if (i % 50 == 0):
-        #    sleep(90)
 
 start(0)
