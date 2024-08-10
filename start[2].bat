@@ -2,3 +2,5 @@
 C:\Users\User\Desktop\pythonPr
 py btc.py
 pause
+go
+generacion
